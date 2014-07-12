@@ -12,7 +12,7 @@ angular.module('myApp.services', []).
 var myApp = angular.module('myApp.services');
 
 //service style, probably the simplest one
-myApp.service('gamecore', ['$timeout', 'tick', function($timeout, tick){
+myApp.service('gamecore', ['$timeout', 'tick', 'resources', function($timeout, tick, resources){
 	var gamecore = this;
 
     this.sayHello = function() {
@@ -20,7 +20,9 @@ myApp.service('gamecore', ['$timeout', 'tick', function($timeout, tick){
     };
 	
 	this.run = function() {
-		console.log('hi');
+		console.log(resources.getResources());
+		
+		resources.getResources()['food'].amount++;
 		
 		timer = $timeout(gamecore.run, tick);
 	}
