@@ -1,3 +1,14 @@
 <p>This is the partial for view 1.</p>
 
-<div ng-repeat="res in resources">{{res.name}} : {{res.amount}}</div>
+people : {{people.amount}} <button type="button" ng-click="addPeople()">Click Me!</button>
+
+
+
+<table>
+	<tr ng-repeat="res in resources">
+	  <td>{{res.name}}</td>
+	  <td>:</td>
+	  <td>{{res.amount}}</td> 
+	  <td>{{res.modify}}</td>
+	</tr>
+</table>
