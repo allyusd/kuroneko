@@ -14,4 +14,11 @@ config(['$routeProvider', function($routeProvider) {
 }]).
 run(['gamecore', function(gamecore) {
 	console.log(gamecore.sayHello());
+
+	Array.prototype.get = function(name) {
+	    for (var i=0, len=this.length; i<len; i++) {
+	        if (typeof this[i] != "object") continue;
+	        if (this[i].name === name) return this[i];
+	    }
+	};
 }]);

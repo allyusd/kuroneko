@@ -32,49 +32,64 @@ myApp.service('gamecore', ['$timeout', 'tick', 'resources', function($timeout, t
 
 	    return undefined;
 	}
-	
+
 	this.run = function() {
 		console.log(resources.getResources());
 
-		for(var i in resList) {
-			var r = res[resList[i]];
+		resList.forEach(function(item) {
+		    var r = res.get(item);
 
 			r.modify = 0;
-		}
+		});
 
 		//res['food'].modify++;
 		//res['wood'].modify++;
 
-		res['food'].modify = res['food'].modify - people.amount * 0.05;
+		res.get('food').modify = res.get('food').modify - res.get('people').amount * 0.05;
+		res.get('food').modify = res.get('food').modify - res.get('farmer').amount * 0.05;
 
-		for(var i in resList) {
-			var r = res[resList[i]];
+		res.get('food').modify = res.get('food').modify + res.get('farmer').amount * 0.1;
+
+		resList.forEach(function(item) {
+			var r = res.get(item);
 
 			r.amount += r.modify;
-		}
+			if (r.amount < 0) {
+				r.amount = 0;
+			}
+		});
 
 		saveStorage('resources', res);
 		
 		timer = $timeout(gamecore.run, tick);
 	}
 
-	this.getPeople = function() {
-		return people;
-	}
-
 	this.addPeople = function() {
-		if (res['food'].amount >= 50) {
-			people.amount++;
-			res['food'].amount -= 50;
+		if (res.get('food').amount >= 50) {
+			res.get('people').amount++;
+			res.get('food').amount -= 50;
 		}
 	}
 
 	this.findfood = function() {
-		res['food'].amount++;
+		res.get('food').amount++;
 	}
 
 	this.findwood = function() {
-		res['wood'].amount++;
+		res.get('wood').amount++;
+	}
+
+	this.addFarmer = function() {
+		if (res.get('people').amount >= 1) {
+			res.get('farmer').amount++;
+			res.get('people').amount -= 1;
+		}
+	}
+
+	this.dataReset = function() {
+		resources.dataReset();
+		res = resources.getResources();
+		saveStorage('resources', res);
 	}
 
 	var res = loadStorage('resources');
@@ -87,8 +102,6 @@ myApp.service('gamecore', ['$timeout', 'tick', 'resources', function($timeout, t
 	}
 	
 	var resList = resources.getResourcesList();
-	var people = {};
-	people.amount = 0;
 	
 	var timer = $timeout(this.run, tick);
 }]);
