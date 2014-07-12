@@ -1,9 +1,7 @@
 <p>This is the partial for view 1.</p>
 
-people : {{people.amount}} 
-
 <table>
-	<tr ng-repeat="res in resources">
+	<tr ng-repeat="res in resources | orderBy:'sort'">
 	  <td>{{res.name}}</td>
 	  <td>:</td>
 	  <td>{{res.amount | number : 2}}</td> 
@@ -15,3 +13,6 @@ people : {{people.amount}}
 <button type="button" ng-click="addPeople()">Add People</button></br>
 <button type="button" ng-click="findfood()">Find Food</button></br>
 <button type="button" ng-click="findwood()">Find Wood</button></br>
+<button type="button" ng-click="addFarmer()">Add Farmer</button></br>
+</P></P></P></P></P>
+<button type="button" ng-click="dataReset()">DataReset</button></br>
