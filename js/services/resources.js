@@ -28,13 +28,17 @@ myApp.service('resources', ['$timeout', 'tick', function($timeout, tick){
 	}
 
 	// public function
+	this.setResources = function(res) {
+		resources = res;
+	}
+
 	this.getResources = function() {
 		return resources;
 	}
 
 	this.getResourcesList = function() {
 		return resourcesList;
-	}	
+	}
 	
 	// init
 	addResources('food');

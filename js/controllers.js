@@ -7,6 +7,8 @@ angular.module('myApp.controllers', []).
   	$scope.people = gamecore.getPeople();
   	$scope.addPeople = gamecore.addPeople;
 	$scope.resources = resources.getResources();
+	$scope.findfood = gamecore.findfood;
+	$scope.findwood = gamecore.findwood;
   }])
   .controller('MyCtrl2', [function() {
   
