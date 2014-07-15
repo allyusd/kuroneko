@@ -3,12 +3,9 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('MyCtrl1', ['$scope', 'gamecore', 'resources', function($scope, gamecore, resources) {
-  	$scope.addPeople = gamecore.addPeople;
+  controller('MyCtrl1', ['$scope', 'gamecore', 'resources', 'action', function($scope, gamecore, resources, action) {
 	$scope.resources = resources.getResources();
-	$scope.findfood = gamecore.findfood;
-	$scope.findwood = gamecore.findwood;
-	$scope.addFarmer = gamecore.addFarmer;
+	$scope.actions = action.getActionList();
 	$scope.dataReset = gamecore.dataReset;
   }])
   .controller('MyCtrl2', [function() {

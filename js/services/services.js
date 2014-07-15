@@ -64,28 +64,6 @@ myApp.service('gamecore', ['$timeout', 'tick', 'resources', function($timeout, t
 		timer = $timeout(gamecore.run, tick);
 	}
 
-	this.addPeople = function() {
-		if (res.get('food').amount >= 50) {
-			res.get('people').amount++;
-			res.get('food').amount -= 50;
-		}
-	}
-
-	this.findfood = function() {
-		res.get('food').amount++;
-	}
-
-	this.findwood = function() {
-		res.get('wood').amount++;
-	}
-
-	this.addFarmer = function() {
-		if (res.get('people').amount >= 1) {
-			res.get('farmer').amount++;
-			res.get('people').amount -= 1;
-		}
-	}
-
 	this.dataReset = function() {
 		resources.dataReset();
 		res = resources.getResources();

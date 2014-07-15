@@ -10,9 +10,8 @@
 </table>
 
 </P>
-<button type="button" ng-click="addPeople()">Add People</button></br>
-<button type="button" ng-click="findfood()">Find Food</button></br>
-<button type="button" ng-click="findwood()">Find Wood</button></br>
-<button type="button" ng-click="addFarmer()">Add Farmer</button></br>
+<div ng-repeat="action in actions | orderBy:'sort'">
+	<button type="button" ng-click="action.click()" title="{{action.tip}}">{{action.name}}</button></br>
+</div>
 </P></P></P></P></P>
 <button type="button" ng-click="dataReset()">DataReset</button></br>
