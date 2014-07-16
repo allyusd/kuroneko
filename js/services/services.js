@@ -7,20 +7,28 @@
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
   value('version', '0.1').
-  value('tick', '100');
+  value('tickInterval', '100');
   
 var myApp = angular.module('myApp.services');
 
 //service style, probably the simplest one
-myApp.service('gamecore', ['$timeout', 'tick', 'storage', 'resources', function($timeout, tick, storage, resources){
-	var gamecore = this;
+myApp.service('gamecore', ['$timeout', 'tickInterval', 'storage', 'resources', function($timeout, tickInterval, storage, resources){
+	var slef = this;
+
+	// privaite member
+
+	// public member
+	slef.tick = 0;
+
+	//private function
 	
+	// public function
     this.sayHello = function() {
         return "Hello, World!"
     };
 
 	this.run = function() {
-		console.log(resources.getResources());
+		// console.log(resources.getResources());
 
 		resList.forEach(function(item) {
 		    var r = res.get(item);
@@ -46,8 +54,10 @@ myApp.service('gamecore', ['$timeout', 'tick', 'storage', 'resources', function(
 		});
 
 		storage.saveStorage('resources', res);
+
+		slef.tick++;
 		
-		timer = $timeout(gamecore.run, tick);
+		timer = $timeout(slef.run, tickInterval);
 	}
 
 	this.dataReset = function() {
@@ -67,5 +77,5 @@ myApp.service('gamecore', ['$timeout', 'tick', 'storage', 'resources', function(
 	
 	var resList = resources.getResourcesList();
 	
-	var timer = $timeout(this.run, tick);
+	var timer = $timeout(this.run, tickInterval);
 }]);

@@ -16,7 +16,8 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
   $stateProvider
     .state('main', {
       url: "/main",
-      templateUrl: "partials/main.html"
+      templateUrl: "partials/main.html",
+      controller: "MainCtrl"
     })
     .state('main.view1', {
       url: "/view1",

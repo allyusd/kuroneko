@@ -5,7 +5,7 @@
 var myApp = angular.module('myApp.services');
 
 //service style, probably the simplest one
-myApp.service('resources', ['$timeout', 'tick', function($timeout, tick){
+myApp.service('resources', [function() {
 	var self = this;
 
 	var resourcesList = [];
