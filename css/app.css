@@ -1,12 +1,22 @@
 /* app css stylesheet */
 
-/* only demo, not use */
+.nav {
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em 0;
+}
+
+.nav > span, .nav > ul {
+  display: inline;
+}
+
+.nav-right {
+  float: right;
+}
 
 .menu {
   list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+  padding: 0 0 0 0;
 }
 
 .menu:before {
