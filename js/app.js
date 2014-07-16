@@ -20,5 +20,7 @@ run(['gamecore', function(gamecore) {
 	        if (typeof this[i] != "object") continue;
 	        if (this[i].name === name) return this[i];
 	    }
+
+	    return undefined;
 	};
 }]);
