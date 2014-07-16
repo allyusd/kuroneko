@@ -12,26 +12,12 @@ angular.module('myApp.services', []).
 var myApp = angular.module('myApp.services');
 
 //service style, probably the simplest one
-myApp.service('gamecore', ['$timeout', 'tick', 'resources', function($timeout, tick, resources){
+myApp.service('gamecore', ['$timeout', 'tick', 'storage', 'resources', function($timeout, tick, storage, resources){
 	var gamecore = this;
 	
     this.sayHello = function() {
         return "Hello, World!"
     };
-
-    function saveStorage(key, value) {
-	    window.localStorage[key] = JSON.stringify(value);
-	}
-
-	function loadStorage(key) {
-	    var value = window.localStorage[key];
-
-	    if (value) {
-		    return JSON.parse(value);
-	    }
-
-	    return undefined;
-	}
 
 	this.run = function() {
 		console.log(resources.getResources());
@@ -59,7 +45,7 @@ myApp.service('gamecore', ['$timeout', 'tick', 'resources', function($timeout, t
 			}
 		});
 
-		saveStorage('resources', res);
+		storage.saveStorage('resources', res);
 		
 		timer = $timeout(gamecore.run, tick);
 	}
@@ -67,10 +53,10 @@ myApp.service('gamecore', ['$timeout', 'tick', 'resources', function($timeout, t
 	this.dataReset = function() {
 		resources.dataReset();
 		res = resources.getResources();
-		saveStorage('resources', res);
+		storage.saveStorage('resources', res);
 	}
 
-	var res = loadStorage('resources');
+	var res = storage.loadStorage('resources');
 
 	if(!res)
 	{
