@@ -7,8 +7,6 @@ var myApp = angular.module('myApp.services');
 //service style, probably the simplest one
 myApp.service('resources', [function() {
 	var self = this;
-
-	var resourcesList = [];
 	
 	// private funcion
 	function createResource(name, sort) {
@@ -23,24 +21,19 @@ myApp.service('resources', [function() {
 	}
 	
 	function addResources(name, sort) {
-		resourcesList.push(name);
 		self.resources[name] = createResource(name, sort);
 	}
 
 	// public function
-	this.setResources = function(res) {
+	self.setResources = function(res) {
 		self.resources = res;
 	}
 
-	this.getResources = function() {
+	self.getResources = function() {
 		return self.resources;
 	}
 
-	this.getResourcesList = function() {
-		return resourcesList;
-	}
-
-	this.dataReset = function() {
+	self.dataReset = function() {
 		self.resources = {};
 		addResources('food', 3);
 		addResources('wood', 4);

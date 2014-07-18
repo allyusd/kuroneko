@@ -13,27 +13,25 @@ var myApp = angular.module('myApp.services');
 
 //service style, probably the simplest one
 myApp.service('gamecore', ['$timeout', 'tickInterval', 'storage', 'resources', function($timeout, tickInterval, storage, resources){
-	var slef = this;
+	var self = this;
 
 	// privaite member
 
 	// public member
-	slef.tick = 0;
+	self.tick = 0;
 
 	//private function
 	
 	// public function
-    this.sayHello = function() {
+    self.sayHello = function() {
         return "Hello, World!"
     };
 
-	this.run = function() {
+	self.run = function() {
 		// console.log(resources.getResources());
 
-		resList.forEach(function(item) {
-		    var r = res[item];
-
-			r.modify = 0;
+		$.each(res, function(index, item) {
+			item.modify = 0;
 		});
 
 		//res['food'].modify++;
@@ -44,23 +42,21 @@ myApp.service('gamecore', ['$timeout', 'tickInterval', 'storage', 'resources', f
 
 		res['food'].modify = res['food'].modify + res['farmer'].amount * 0.1;
 
-		resList.forEach(function(item) {
-			var r = res[item];
-
-			r.amount += r.modify;
-			if (r.amount < 0) {
-				r.amount = 0;
+		$.each(res, function(index, item) {
+			item.amount += item.modify;
+			if (item.amount < 0) {
+				item.amount = 0;
 			}
 		});
 
 		storage.saveStorage('resources', res);
 
-		slef.tick++;
+		self.tick++;
 		
-		timer = $timeout(slef.run, tickInterval);
+		timer = $timeout(self.run, tickInterval);
 	}
 
-	this.dataReset = function() {
+	self.dataReset = function() {
 		resources.dataReset();
 		res = resources.getResources();
 		storage.saveStorage('resources', res);
@@ -75,7 +71,5 @@ myApp.service('gamecore', ['$timeout', 'tickInterval', 'storage', 'resources', f
 		resources.setResources(res);
 	}
 	
-	var resList = resources.getResourcesList();
-	
-	var timer = $timeout(this.run, tickInterval);
+	var timer = $timeout(self.run, tickInterval);
 }]);
