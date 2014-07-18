@@ -24,7 +24,7 @@ myApp.service('resources', [function() {
 	
 	function addResources(name, sort) {
 		resourcesList.push(name);
-		self.resources.push(createResource(name, sort));
+		self.resources[name] = createResource(name, sort);
 	}
 
 	// public function
@@ -41,7 +41,7 @@ myApp.service('resources', [function() {
 	}
 
 	this.dataReset = function() {
-		self.resources = [];
+		self.resources = {};
 		addResources('food', 3);
 		addResources('wood', 4);
 		addResources('people', 1);

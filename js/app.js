@@ -5,7 +5,8 @@ angular.module('myApp', [
   'ui.router',
   'myApp.controllers',
   'myApp.services',
-  'myApp.directives'
+  'myApp.directives',
+  'myApp.filters'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   //
@@ -33,12 +34,4 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
 run(['gamecore', function(gamecore) {
 	console.log(gamecore.sayHello());
 
-	Array.prototype.get = function(name) {
-	    for (var i=0, len=this.length; i<len; i++) {
-	        if (typeof this[i] != "object") continue;
-	        if (this[i].name === name) return this[i];
-	    }
-
-	    return undefined;
-	};
 }]);

@@ -1,7 +1,7 @@
 <p>This is the partial for view 1.</p>
 
 <table>
-	<tr ng-repeat="res in resources | orderBy:'sort'">
+	<tr ng-repeat="res in resources | orderObjectBy:'sort'">
 	  <td>{{res.name}}</td>
 	  <td>:</td>
 	  <td>{{res.amount | number : 2}}</td> 

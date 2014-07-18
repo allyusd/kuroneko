@@ -31,24 +31,24 @@ myApp.service('action', ['resources', function(resources){
 	var res = resources.getResources();
 
 	createAction('addPeople', 1, 'need 50 food', function() {
-		if (res.get('food').amount >= 50) {
-			res.get('people').amount++;
-			res.get('food').amount -= 50;
+		if (res['food'].amount >= 50) {
+			res['people'].amount++;
+			res['food'].amount -= 50;
 		}
 	});
 
 	createAction('findfood', 2, 'will get a food', function() {
-		res.get('food').amount++;
+		res['food'].amount++;
 	});
 
 	createAction('findwood', 3, 'will get a wood', function() {
-		res.get('wood').amount++;
+		res['wood'].amount++;
 	});
 
 	createAction('addFarmer', 4, 'need a people', function() {
-		if (res.get('people').amount >= 1) {
-			res.get('farmer').amount++;
-			res.get('people').amount -= 1;
+		if (res['people'].amount >= 1) {
+			res['farmer'].amount++;
+			res['people'].amount -= 1;
 		}
 	});
 }]);

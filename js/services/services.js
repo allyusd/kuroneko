@@ -31,7 +31,7 @@ myApp.service('gamecore', ['$timeout', 'tickInterval', 'storage', 'resources', f
 		// console.log(resources.getResources());
 
 		resList.forEach(function(item) {
-		    var r = res.get(item);
+		    var r = res[item];
 
 			r.modify = 0;
 		});
@@ -39,13 +39,13 @@ myApp.service('gamecore', ['$timeout', 'tickInterval', 'storage', 'resources', f
 		//res['food'].modify++;
 		//res['wood'].modify++;
 
-		res.get('food').modify = res.get('food').modify - res.get('people').amount * 0.05;
-		res.get('food').modify = res.get('food').modify - res.get('farmer').amount * 0.05;
+		res['food'].modify = res['food'].modify - res['people'].amount * 0.05;
+		res['food'].modify = res['food'].modify - res['farmer'].amount * 0.05;
 
-		res.get('food').modify = res.get('food').modify + res.get('farmer').amount * 0.1;
+		res['food'].modify = res['food'].modify + res['farmer'].amount * 0.1;
 
 		resList.forEach(function(item) {
-			var r = res.get(item);
+			var r = res[item];
 
 			r.amount += r.modify;
 			if (r.amount < 0) {
