@@ -6,9 +6,13 @@ angular.module('myApp.controllers', []).
   controller('MainCtrl', ['$scope', 'gamecore', function($scope, gamecore) {
   	$scope.gamecore = gamecore;
   }]).
-  controller('MyCtrl1', ['$scope', 'gamecore', 'resources', 'action', function($scope, gamecore, resources, action) {
-  	$scope.resources = resources.getResources();
+  controller('MyCtrl1', ['$scope', 'gamecore', function($scope, gamecore) {
+    $scope.gamecore = gamecore;
+    $scope.resources = gamecore.resources;
+    $scope.actions = gamecore.actions;
   }]).
-  controller('MyCtrl2', ['$scope', 'action', function($scope, action) {
-    $scope.actions = action.getActionList();
+  controller('MyCtrl2', ['$scope', 'gamecore', function($scope, gamecore) {
+    $scope.gamecore = gamecore;
+    $scope.resources = gamecore.resources;
+    $scope.actions = gamecore.actions;
   }]);
