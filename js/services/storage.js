@@ -9,7 +9,9 @@ myApp.service('storage', ['localstorage', function(localstorage){
 	var self = this;
 
 	// private member
-	self.storage = localstorage;
+	self.storage = new localstorage('kuroneko');
+
+	self.storage = new LocalStorage();
 
 	// public member
 	
