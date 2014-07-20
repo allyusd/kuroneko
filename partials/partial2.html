@@ -1,1 +1,6 @@
-<p>This is the partial for view 2.</p>
+<p>Actions</p>
+
+</P>
+<div ng-repeat="action in actions | orderBy:'sort'">
+	<button type="button" ng-click="action.click()" title="{{action.tip}}">{{action.name}}</button></br>
+</div>

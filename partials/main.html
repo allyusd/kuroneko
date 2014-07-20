@@ -1,12 +1,14 @@
 <div class="nav">
 	<ul class="menu">
-		<li><a ui-sref="main.view1">view1</a></li>
-		<li><a ui-sref="main.view2">view2</a></li>
+		<li><a ui-sref="main.view1">Resources</a></li>
+		<!-- <li><a ui-sref="main.view2">Actions</a></li> -->
 	</ul>
 	<span class="nav-right">
-	<span>{{gamecore.tick}}</span>
-	<span>Angular seed app: v<span app-version></span></span>
+	<!-- <span>{{gamecore.tick}}</span> -->
+	<span>Kuroneko Idle Game: v<span app-version></span></span>
 	<span>
 </div>
 
 <div ui-view></div>
+
+<button type="button" ng-click="gamecore.dataReset()">DataReset</button></br>

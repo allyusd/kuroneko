@@ -1,4 +1,4 @@
-<p>This is the partial for view 1.</p>
+<p>Resources</p>
 
 <table>
 	<tr ng-repeat="res in resources | orderObjectBy:'sort'">
@@ -10,8 +10,6 @@
 </table>
 
 </P>
-<div ng-repeat="action in actions | orderBy:'sort'">
-	<button type="button" ng-click="action.click()" title="{{action.tip}}">{{action.name}}</button></br>
+<div ng-repeat="action in actions | orderObjectBy:'sort'">
+	<button type="button" ng-click="action.click()" title="{{action.tip}}">{{action.text}}</button></br>
 </div>
-</P></P></P></P></P>
-<button type="button" ng-click="dataReset()">DataReset</button></br>
