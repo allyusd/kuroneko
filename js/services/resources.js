@@ -35,10 +35,9 @@ myApp.service('resources', [function() {
 
 	self.dataReset = function() {
 		self.resources = {};
-		addResources('food', 3);
-		addResources('wood', 4);
-		addResources('people', 1);
-		addResources('farmer', 2);
+		addResources('soul', 1);
+		addResources('imp', 2);
+		addResources('land', 3);
 	}
 	
 	// init

@@ -45,10 +45,12 @@ myApp.service('gamecore', ['$timeout', 'tickInterval', 'storage', 'resources', '
 		//self.resources['food'].modify++;
 		//self.resources['wood'].modify++;
 
-		self.resources['food'].modify = self.resources['food'].modify - self.resources['people'].amount * 0.05;
-		self.resources['food'].modify = self.resources['food'].modify - self.resources['farmer'].amount * 0.05;
+		//self.resources['food'].modify = self.resources['food'].modify - self.resources['people'].amount * 0.05;
+		//self.resources['food'].modify = self.resources['food'].modify - self.resources['farmer'].amount * 0.05;
 
-		self.resources['food'].modify = self.resources['food'].modify + self.resources['farmer'].amount * 0.1;
+		//self.resources['food'].modify = self.resources['food'].modify + self.resources['farmer'].amount * 0.1;
+		self.resources['soul'].modify = self.resources['soul'].modify + self.resources['imp'].amount * 0.01;
+		self.resources['soul'].modify = self.resources['soul'].modify + self.resources['land'].amount * 0.02;
 
 		$.each(self.resources, function(index, item) {
 			item.amount += item.modify;

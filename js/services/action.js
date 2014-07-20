@@ -23,29 +23,46 @@ myApp.service('action', ['resources', function(resources){
 		actionList[name] = action;
 	}
 
+	function calNeedResources(base, amount, mul) {
+		var result = base;
+
+		if (amount > 0)
+		{
+			result = base * Math.pow(mul, amount);
+		}
+
+		return result.toFixed(2);
+	}
+
+	function getTips(base, mul, resourcesname) {
+		return 'need ' + calNeedResources(base, self.resources[resourcesname].amount, mul) + ' soul';
+	}
+
 	// public function
 	self.init = function() {
 		self.resources = resources.getResources();
 
-		createAction('findfood', 1, 'Find Food', 'will get a food', function() {
-			self.resources['food'].amount++;
+		createAction('findsoul', 1, 'Find Soul', 'get soul', function() {
+			self.resources['soul'].amount++;
 		});
 
-		createAction('findwood', 2, 'Find Wood', 'will get a wood', function() {
-			self.resources['wood'].amount++;
-		});
+		createAction('getImp', 2, 'Get Imp', getTips(10, 1.2, 'imp'), function() {
+			var need = calNeedResources(10, self.resources['imp'].amount, 1.2);
 
-		createAction('addPeople', 3, 'Add People', 'need 50 food', function() {
-			if (self.resources['food'].amount >= 50) {
-				self.resources['people'].amount++;
-				self.resources['food'].amount -= 50;
+			if (self.resources['soul'].amount >= need) {
+				self.resources['imp'].amount++;
+				self.resources['soul'].amount -= need;
+
+				actionList['getImp'].tip = getTips(10, 1.2, 'imp');
 			}
 		});
 
-		createAction('addFarmer', 4, 'Add Farmer', 'need a people', function() {
-			if (self.resources['people'].amount >= 1) {
-				self.resources['farmer'].amount++;
-				self.resources['people'].amount -= 1;
+		createAction('getLand', 3, 'Get Land', getTips(100, 1.2, 'imp'), function() {
+			var need = calNeedResources(10, self.resources['land'].amount, 1.2);
+
+			if (self.resources['soul'].amount >= need) {
+				self.resources['land'].amount++;
+				self.resources['soul'].amount -= need;
 			}
 		});
 	}
