@@ -57,12 +57,14 @@ myApp.service('action', ['resources', function(resources){
 			}
 		});
 
-		createAction('getLand', 3, 'Get Land', getTips(100, 1.2, 'imp'), function() {
+		createAction('getLand', 3, 'Get Land', getTips(100, 1.2, 'land'), function() {
 			var need = calNeedResources(10, self.resources['land'].amount, 1.2);
 
 			if (self.resources['soul'].amount >= need) {
 				self.resources['land'].amount++;
 				self.resources['soul'].amount -= need;
+
+				actionList['getLand'].tip = getTips(10, 1.2, 'land');
 			}
 		});
 	}
