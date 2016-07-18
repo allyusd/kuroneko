@@ -35,3 +35,4 @@ run(['gamecore', function(gamecore) {
 	console.log(gamecore.sayHello());
 
 }]);
+angular.module('myApp.services', []);
