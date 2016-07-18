@@ -1,0 +1,1 @@
+java -jar compiler-latest\compiler.jar --js_output_file myapp.min.js --create_source_map myapp.min.js.map --output_wrapper "%%output%%//# sourceMappingURL=myapp.min.js.map" js/**.js
